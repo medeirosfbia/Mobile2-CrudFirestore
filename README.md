@@ -123,7 +123,6 @@ EXPO_PUBLIC_FIREBASE_APP_ID=1:1234567890:web:abcdef123456
 Observações:
 
 - O arquivo `.env` já está no `.gitignore`.
-- Se alguma variável estiver faltando, o app lança erro ao iniciar informando quais chaves faltam.
 
 ## Como rodar o projeto
 
@@ -164,22 +163,11 @@ npm run web
 
 ## Possíveis erros comuns
 
-- `Firebase env faltando: ...`
   - Verifique se o `.env` foi criado corretamente e se os nomes das variáveis estão idênticos.
 
-- `auth/operation-not-allowed`
   - Ative o login Email/Password no Firebase Authentication.
 
-- `permission-denied` no Firestore
   - Ajuste as regras de segurança para permitir acesso ao usuário autenticado.
-
-## Melhorias futuras (sugestões)
-
-- Marcar tarefa como concluída
-- Filtro por status e busca por texto
-- Paginação da lista
-- Testes unitários dos serviços
-- Deploy web do projeto
 
 ## Licença
 
