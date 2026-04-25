@@ -5,13 +5,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDXCht-n9yF6SN-CX_lEpvVuhFkyQm5tJI',
-    authDomain: 'crud-firebase-mobile2.firebaseapp.com',
-    projectId: 'crud-firebase-mobile2',
-    storageBucket: 'crud-firebase-mobile2.firebasestorage.app',
-    messagingSenderId: '979929955335',
-    appId: '1:979929955335:web:a1bb000e70ba53d13cfea2'
+    apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
 };
+
+const missingEnvKeys = Object.entries(firebaseConfig)
+    .filter(([, value]) => !value)
+    .map(([key]) => key);
+
+if (missingEnvKeys.length > 0) {
+    throw new Error(`Firebase env faltando: ${missingEnvKeys.join(', ')}`);
+}
 
 const app = initializeApp(firebaseConfig);
 
