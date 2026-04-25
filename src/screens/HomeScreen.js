@@ -79,16 +79,31 @@ export default function HomeScreen({ navigation, route }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Lista de Tarefas</Text>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutButtonText}>Sair</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.createButton}
-          onPress={() => navigation.navigate('CreateTask')}
-        >
-          <Text style={styles.createButtonText}>Nova Tarefa</Text>
-        </TouchableOpacity>
+        <View style={styles.titleRow}>
+          <Text style={styles.title}>Minhas Tarefas</Text>
+          <View style={styles.countBadge}>
+            <Text style={styles.countBadgeText}>{tasks.length}</Text>
+          </View>
+        </View>
+
+        <Text style={styles.subtitle}>Organize suas atividades e mantenha tudo em dia.</Text>
+
+        <View style={styles.headerActions}>
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={handleLogout}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.logoutButtonText}>Sair</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.createButton}
+            onPress={() => navigation.navigate('CreateTask')}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.createButtonText}>Nova Tarefa</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <FlatList
@@ -102,7 +117,12 @@ export default function HomeScreen({ navigation, route }) {
           />
         )}
         contentContainerStyle={styles.listContent}
-        ListEmptyComponent={<Text style={styles.emptyText}>Nenhuma tarefa cadastrada.</Text>}
+        ListEmptyComponent={
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyTitle}>Nenhuma tarefa cadastrada</Text>
+            <Text style={styles.emptyText}>Crie sua primeira tarefa para comecar.</Text>
+          </View>
+        }
       />
 
       <ConfirmModal
@@ -117,36 +137,79 @@ export default function HomeScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: '#eef2ff',
     paddingHorizontal: 16,
     paddingTop: 10,
   },
   header: {
-    marginBottom: 10,
+    marginBottom: 14,
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    padding: 14,
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   title: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '800',
-    color: '#111827',
-    marginBottom: 10,
+    color: '#0f172a',
+  },
+  countBadge: {
+    minWidth: 34,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    backgroundColor: '#dbeafe',
+    alignItems: 'center',
+  },
+  countBadgeText: {
+    color: '#1d4ed8',
+    fontWeight: '800',
+    fontSize: 14,
+  },
+  subtitle: {
+    marginTop: 8,
+    marginBottom: 14,
+    color: '#475569',
+    fontSize: 14,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    gap: 10,
   },
   logoutButton: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#6b7280',
+    flex: 1,
+    backgroundColor: '#e2e8f0',
     paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 8,
-    marginBottom: 10,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
   },
   logoutButtonText: {
-    color: '#fff',
+    color: '#334155',
     fontWeight: '700',
   },
   createButton: {
+    flex: 2,
     backgroundColor: '#16a34a',
     paddingVertical: 12,
     borderRadius: 10,
     alignItems: 'center',
+    shadowColor: '#15803d',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 2,
   },
   createButtonText: {
     color: '#fff',
@@ -156,10 +219,25 @@ const styles = StyleSheet.create({
   listContent: {
     paddingBottom: 24,
   },
+  emptyState: {
+    backgroundColor: '#ffffff',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    paddingVertical: 26,
+    paddingHorizontal: 16,
+    marginTop: 8,
+    alignItems: 'center',
+  },
+  emptyTitle: {
+    color: '#1e293b',
+    fontSize: 17,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
   emptyText: {
     textAlign: 'center',
-    color: '#6b7280',
-    marginTop: 40,
-    fontSize: 16,
+    color: '#64748b',
+    fontSize: 14,
   },
 });

@@ -10,11 +10,19 @@ export default function TaskItem({ task, onEdit, onDelete }) {
       </View>
 
       <View style={styles.actions}>
-        <TouchableOpacity style={[styles.button, styles.editButton]} onPress={() => onEdit(task)}>
-          <Text style={styles.buttonText}>Editar</Text>
+        <TouchableOpacity
+          style={[styles.button, styles.editButton]}
+          onPress={() => onEdit(task)}
+          activeOpacity={0.85}
+        >
+          <Text style={[styles.buttonText, styles.editButtonText]}>Editar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, styles.deleteButton]} onPress={() => onDelete(task)}>
+        <TouchableOpacity
+          style={[styles.button, styles.deleteButton]}
+          onPress={() => onDelete(task)}
+          activeOpacity={0.85}
+        >
           <Text style={styles.buttonText}>Deletar</Text>
         </TouchableOpacity>
       </View>
@@ -25,43 +33,56 @@ export default function TaskItem({ task, onEdit, onDelete }) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 14,
-    marginBottom: 10,
+    borderRadius: 14,
+    padding: 16,
+    marginBottom: 12,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: '#dbeafe',
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 2,
   },
   content: {
-    marginBottom: 12,
+    marginBottom: 14,
   },
   title: {
-    fontSize: 18,
+    fontSize: 19,
     fontWeight: '700',
-    color: '#111827',
+    color: '#0f172a',
   },
   description: {
-    marginTop: 4,
+    marginTop: 6,
     fontSize: 14,
-    color: '#4b5563',
+    lineHeight: 20,
+    color: '#475569',
   },
   actions: {
     flexDirection: 'row',
+    gap: 10,
   },
   button: {
     flex: 1,
-    paddingVertical: 10,
-    borderRadius: 8,
+    paddingVertical: 11,
+    borderRadius: 10,
     alignItems: 'center',
+    borderWidth: 1,
   },
   editButton: {
-    backgroundColor: '#2563eb',
-    marginRight: 10,
+    backgroundColor: '#eff6ff',
+    borderColor: '#bfdbfe',
   },
   deleteButton: {
     backgroundColor: '#dc2626',
+    borderColor: '#dc2626',
   },
   buttonText: {
     color: '#fff',
     fontWeight: '700',
+    fontSize: 14,
+  },
+  editButtonText: {
+    color: '#1d4ed8',
   },
 });
