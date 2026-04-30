@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ActivityIndicator, View } from 'react-native';
-import CreateTaskScreen from '../screens/CreateTaskScreen';
-import EditTaskScreen from '../screens/EditTaskScreen';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
+import CreateTaskScreen from './CreateTaskScreen';
+import EditTaskScreen from './EditTaskScreen';
+import HomeScreen from './HomeScreen';
+import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
 import { subscribeAuthState } from '../services/authService';
 
 const Stack = createNativeStackNavigator();

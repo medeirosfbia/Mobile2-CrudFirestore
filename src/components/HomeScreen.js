@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import ConfirmModal from '../components/ConfirmModal';
-import TaskItem from '../components/TaskItem';
+import ConfirmModal from './ConfirmModal';
+import TaskItem from './TaskItem';
 import { logout } from '../services/authService';
 import { deleteTask, getTasks } from '../services/taskService';
 

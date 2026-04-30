@@ -10,7 +10,7 @@ Este projeto foi desenvolvido para praticar os conceitos de:
 - Persistência de dados no Firestore
 - Operações de CRUD (criar, listar, editar e excluir)
 - Navegação entre telas com React Navigation
-- Estruturação de app React Native com camadas de `screens`, `components` e `services`
+- Estruturação de app React Native com camadas de `components` e `services`
 
 ## Funcionalidades
 
@@ -50,9 +50,7 @@ crud-firestore/
     components/
       ConfirmModal.js
       TaskItem.js
-    navigation/
       AppNavigator.js
-    screens/
       LoginScreen.js
       RegisterScreen.js
       HomeScreen.js
